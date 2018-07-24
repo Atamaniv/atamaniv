@@ -13,7 +13,6 @@ module.exports = {
     publicPath: '/static/'
   },
   resolve: {
-    moduleDirectories:['node_modules'],
     extensions: ['.js', '.ts', '.tsx']
   },
   module: {
@@ -31,6 +30,9 @@ module.exports = {
         test: /\.svg$/,
         loader: 'svg-inline-loader'
     }]
+  },
+  devServer: {
+    stats: 'errors-only'
   }
 };
 
