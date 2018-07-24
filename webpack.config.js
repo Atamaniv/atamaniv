@@ -12,28 +12,17 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/static/'
   },
-  resolve: {
-    extensions: ['.js', '.ts', '.tsx']
-  },
+  resolve: { extensions: ['.js', '.ts', '.tsx'] },
   module: {
-    loaders: [
-    {
-      test: /\.tsx?$/,
-      use: [
-        {
-          loader: "awesome-typescript-loader"
-        },
-      ],
-      include: path.join(__dirname, 'src')
-    },
-    {
-        test: /\.svg$/,
-        loader: 'svg-inline-loader'
-    }]
-  },
-  devServer: {
-    stats: 'errors-only'
-  }
+           loaders: [{ test: /\.tsx?$/,
+                       use: [{loader: "awesome-typescript-loader"},],
+                       include: path.join(__dirname, 'src')
+             	     },
+		     { test: /\.svg$/,
+     	               loader: 'svg-inline-loader'
+  		     }]
+          },
+  devServer: { stats: 'errors-only' }
 };
 
 
