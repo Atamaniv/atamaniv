@@ -2,27 +2,26 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
+  mode : 'production',
   devtool: 'eval',
-  entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    './src/index'
-  ],
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
-  },
-  resolve: { extensions: ['.js', '.ts', '.tsx'] },
+  entry: [ 'webpack-dev-server/client?http://localhost:3000','./src/index' ],
+
   module: {
-           loaders: [{ test: /\.tsx?$/,
-                       use: [{loader: "awesome-typescript-loader"},],
-                       include: path.join(__dirname, 'src')
-             	     },
-		     { test: /\.svg$/,
-     	               loader: 'svg-inline-loader'
-  		     }]
-          },
-  devServer: { stats: 'errors-only' }
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader'
+      }
+    ]
+  },
+  performance: { hints: false },
+    
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ]
+  },
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'src'),
+    publicPath: '/static/'  
+  }
 };
-
-
